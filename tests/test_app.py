@@ -12,6 +12,6 @@ class TestApp(unittest.TestCase):
         # 测试根路由
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data.decode('utf-8'), 'Hello, World!')
+        self.assertEqual(response.data.decode('utf-8'), 'Hello, NEU!')
 if __name__ == '__main__':
     unittest.main()
