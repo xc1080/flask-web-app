@@ -37,6 +37,7 @@ jobs:
           # 强制设置权限（SSH协议要求）
           chmod 600 ~/.ssh/id_rsa
           
+          
           # 扫描主机密钥（指定端口）
           ssh-keyscan -p 52910 -H ${{ secrets.TOUGE_SERVER_IP }} >> ~/.ssh/known_hosts
           echo "SSH环境配置完成，尝试连接服务器..."
