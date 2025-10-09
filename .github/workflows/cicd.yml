@@ -25,7 +25,7 @@ jobs:
           pip install pytest==8.4.1
           pytest tests/ -v
         continue-on-error: false
-      - name: Deploy to Touge Server via SSH (Port 49165)
+      - name: Deploy to Touge Server via SSH (Port 52910)
         run: |
           # 配置SSH环境（强制兼容RSA私钥）
           mkdir -p ~/.ssh
@@ -38,10 +38,10 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           
           # 扫描主机密钥（指定端口）
-          ssh-keyscan -p 49165 -H ${{ secrets.TOUGE_SERVER_IP }} >> ~/.ssh/known_hosts
+          ssh-keyscan -p 52910 -H ${{ secrets.TOUGE_SERVER_IP }} >> ~/.ssh/known_hosts
           echo "SSH环境配置完成，尝试连接服务器..."
           # 连接服务器执行部署（添加-o选项兼容旧版SSH）
-          ssh -v -p 49165 -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedAlgorithms=+ssh-rsa root@${{ secrets.TOUGE_SERVER_IP }} << 'EOF'
+          ssh -v -p 52910 -o HostKeyAlgorithms=+ssh-rsa -o PubkeyAcceptedAlgorithms=+ssh-rsa root@${{ secrets.TOUGE_SERVER_IP }} << 'EOF'
             set -e
             echo "成功连接服务器：$(whoami)@$(hostname)"
             
