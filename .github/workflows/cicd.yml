@@ -48,6 +48,7 @@ jobs:
             
             cd /root/flask-web-app || { echo "项目目录不存在"; exit 1; }
             git pull origin main || { echo "Git拉取失败"; exit 1; }
+
             
             
             pip3 install --upgrade pip
